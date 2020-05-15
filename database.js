@@ -64,9 +64,18 @@ function getAppointments (callback) {
 }
 
 
+function getAvailableSlots(date, callback) {
+    getDb().collection('appointments').findOne({date: date})
+     .then( (error, result) => {
+         callback(result);
+     })
+}
+
+
 module.exports = {
     connectToMongo: connectToMongo,
     getAppointments: getAppointments,
     saveAppointment: saveAppointment,
-    saveAvailablity: saveAvailablity
+    saveAvailablity: saveAvailablity,
+    getAvailableSlots: getAvailableSlots
 }

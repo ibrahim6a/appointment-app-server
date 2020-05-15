@@ -10,6 +10,15 @@ router.get('/', (request, response, next) => {
     });
 })
 
+router.get('/:date', (request, response, next) => {
+    let date = request.params.date;
+    console.log(date);
+    database.getAvailableSlots(date, (result) => {
+        console.log(result);
+        response.json(result);
+    })
+})
+
 const mockAppointment = {
     firstName: 'John',
     lastName: 'Doe',
