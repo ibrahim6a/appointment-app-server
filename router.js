@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/', (request, response, next) => {
     database.getAppointments( (appointmentList) => {
-        response.json(appointmentList);
+        response.json(`appointmentList`);
     });
 })
 
