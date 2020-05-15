@@ -1,0 +1,38 @@
+const express = require('express');
+const database = require('./database');
+
+const router = express.Router();
+
+router.get('/', (request, response, next) => {
+    database.getAppointments( (appointmentList) => {
+        response.json(appointmentList);
+    });
+})
+
+const mockAppointment = {
+    firstName: 'John',
+    lastName: 'Doe',
+    date: new Date (2020, 04, 24),
+    slot: {time: 9, available: false}
+}
+
+const mockAvailability = {
+    date: new Date (2020, 04, 28),
+    slots: [
+        {time: 9, available: true}, {time: 10, available: true}, {time: 11, available: false}, {time: 12, available: false}, {time: 13, available: true}, {time: 14, available: false}
+    ]
+}
+
+
+router.post('/', (request, response, next) => {
+    console.log(request.body);
+    database.saveAppointment(mockAppointment);
+    response.json(request.body);
+})
+
+router.delete('/', (request, response, next) => {
+    console.log(request.body);
+    response.json(request.body);
+})
+
+module.exports.router = router; 
