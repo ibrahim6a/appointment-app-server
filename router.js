@@ -4,8 +4,9 @@ const database = require('./database');
 const router = express.Router();
 
 router.get('/', (request, response, next) => {
+    console.log('We are Here');
     database.getAppointments( (appointmentList) => {
-        response.json(`appointmentList`);
+        response.json(appointmentList);
     });
 })
 

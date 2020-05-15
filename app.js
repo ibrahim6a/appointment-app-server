@@ -18,7 +18,7 @@ app.use(function (req, res, next) {
 
 app.use(router);
 
-const PORT = 3000 || process.env.PORT;
+const PORT = process.env.PORT;
 
 database.connectToMongo( () => {
     app.listen(PORT, () => {
