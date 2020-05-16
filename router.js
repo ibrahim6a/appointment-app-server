@@ -14,8 +14,8 @@ router.get('/', (request, response, next) => {
 router.get('/date/:date', (request, response, next) => {
     let date = request.params.date;
     console.log(date);
+    // response.json('Hi');
     database.getAvailableSlots(date, (result) => {
-        // console.log(result);
         response.json(result);
     })
 })

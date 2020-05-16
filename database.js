@@ -66,19 +66,18 @@ function getAppointments (callback) {
 
 
 function getAvailableSlots(date, callback) {
-    getDb().collection('appointments').findOne({date: date})
-     .then( (error, result) => {
+    getDb().collection('appointments').find({date: date}).toArray( (error, result) => {
         if (error) {
-             console.log(error)
-        } 
-        else if (result === undefined) {
-            console.log(result);
-            callback('There are no matches');
-        } else {
-            console.log(result);
-            callback(result);
-        }
-     })
+            console.log(error)
+       } 
+       else if (result === undefined) {
+           console.log(result);
+           callback('There are no matches');
+       } else {
+           console.log(result);
+           callback(result);
+       }
+    })
 }
 
 
