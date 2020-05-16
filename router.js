@@ -14,10 +14,10 @@ router.get('/', (request, response, next) => {
 router.get('/date/:date', (request, response, next) => {
     let date = request.params.date;
     console.log(date);
-    // database.getAvailableSlots(date, (result) => {
-    //     console.log(result);
-    //     response.json(result);
-    // })
+    database.getAvailableSlots(date, (result) => {
+        console.log(result);
+        response.json(result);
+    })
 })
 
 const mockAppointment = {
@@ -37,7 +37,7 @@ const mockAvailability = {
 
 router.post('/', (request, response, next) => {
     console.log(request.body);
-    database.saveAppointment(mockAppointment);
+    database.saveAppointment(request.body);
     response.json(request.body);
 })
 
