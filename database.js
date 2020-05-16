@@ -44,7 +44,7 @@ function getDb() {
 }
 
 function saveAppointment (appointment) {
-    getDb().collection('appointments').insertOne({firstName: appointment.firstName, lastName: appointment.lastName, date: appointment.date, slot: appointment.slot});
+    getDb().collection('appointments').insertOne({user: appointment.user, date: appointment.selectedDate, slot: appointment.selectedTime});
 }
 
 function saveAvailablity (availability) {
