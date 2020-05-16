@@ -44,6 +44,7 @@ function getDb() {
 }
 
 function saveAppointment (appointment) {
+    console.log(appointment.selectedDate);
     getDb().collection('appointments').insertOne({user: appointment.user, date: appointment.selectedDate, slot: appointment.selectedTime});
 }
 
@@ -70,11 +71,12 @@ function getAvailableSlots(date, callback) {
         if (error) {
              console.log(error)
         } 
-        if (result === undefined) {
-            callback('There are no matches')
+        else if (result === undefined) {
+            console.log(result);
+            callback('There are no matches');
         } else {
-         console.log(result);
-         callback(result);
+            console.log(result);
+            callback(result);
         }
      })
 }
