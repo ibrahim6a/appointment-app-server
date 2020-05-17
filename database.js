@@ -44,6 +44,7 @@ function getDb() {
 }
 
 function saveAppointment (appointment) {
+    appointment.selectedDate = appointment.selectedDate.slice(0, 15);
     console.log(appointment.selectedDate);
     getDb().collection('appointments').insertOne({user: appointment.user, date: appointment.selectedDate, slot: appointment.selectedTime});
 }
@@ -66,6 +67,7 @@ function getAppointments (callback) {
 
 
 function getAvailableSlots(date, callback) {
+    date = date.slice(0, 15);
     getDb().collection('appointments').find({date: date}).toArray( (error, result) => {
         if (error) {
             console.log(error)
