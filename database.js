@@ -82,11 +82,15 @@ function getAvailableSlots(date, callback) {
     })
 }
 
+function deleteBooking(_id) {
+    getDb().collection('appointments').deleteOne({_id: _id});
+} 
 
 module.exports = {
     connectToMongo: connectToMongo,
     getAppointments: getAppointments,
     saveAppointment: saveAppointment,
     saveAvailablity: saveAvailablity,
-    getAvailableSlots: getAvailableSlots
+    getAvailableSlots: getAvailableSlots,
+    deleteBooking: deleteBooking
 }
