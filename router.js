@@ -29,7 +29,7 @@ router.post('/', (request, response, next) => {
 router.delete('/', (request, response, next) => {
     console.log(request.body);
     response.json(request.body);
-    database.deleteBooking(request.body);
+    database.deleteBooking(request.body._id);
 })
 
 module.exports.router = router; 
