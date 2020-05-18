@@ -83,6 +83,7 @@ function getAvailableSlots(date, callback) {
 }
 
 function deleteBooking(_id) {
+    _id = ObjectId(_id);
     getDb().collection('appointments').deleteOne({_id: _id});
 } 
 
